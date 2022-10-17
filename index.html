@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container">
+                  <span class="material-symbols-outlined">
+                    storefront
+                    </span>
+                    <h1 class="subtitle is-3 is-italic" >Ventas</h1>
+                  
+                </div>
+              </nav>
+        </div>
+        </header>
+        <br>
+        <br>
+    <br>
+    <br>
+      <p class="title has-text-centered">Seleccione lo que quiere ver</p>
+      <br>
+      <div class="container">
+        <div class="columns is-mobile is-centered">
+        <select class="form-select" aria-label="Default select example" name="selectUsuario" id="selectUsuario" onchange="operacion(selectUsuario.value)">
+          <option>Seleccione una opción</option>  
+            <option value="cuatrimestre">Artículo mas vendido en el ultimo cuatrimestre</option>
+            <option value="gananciaCadaMes">Artículo de mayor facturación en cada mes</option>
+            <option value="trimestre">Artículo de menor facturación en cada trimestre</option>
+            <option value="año">Artículo con mayor ganancia en el año</option>
+        </select> 
+      </div>
+    </div>
+    <br>
+    <br>
+    <div id="zonaTabla"></div>
+    
+<script>
+  
+const operacion = (operacion) => {
+  document.getElementById("zonaTabla").innerHTML = ``
+  switch(operacion) {
+    case "cuatrimestre":
+    document.getElementById("zonaTabla").innerHTML += `<div class="box">
+      <h1 class="title is-italic has-text-weight-light">Ventas</h1>
+      <table id="tabla" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+              <tr>
+                  <th class="has-text-centered">Id del artículo</th>
+                  <th class="has-text-centered">Artículo</th>
+                  <th class="has-text-centered">Cantidad Vendida</th>
+              </tr>
+          </thead>
+          <tbody id="lista">
+          </tbody>
+  </section>
+  </div>`
+      addCutrimestre()
+    break;
+
+    case "gananciaCadaMes":
+      document.getElementById("zonaTabla").innerHTML += `<div class="box">
+        <h1 class="title is-italic has-text-weight-light">Ventas</h1>
+        <table id="tabla" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th class="has-text-centered">Mes</th>
+                    <th class="has-text-centered">Id del artículo</th>
+                    <th class="has-text-centered">Artículo</th>
+                    <th class="has-text-centered">Ganancia</th>
+                </tr>
+            </thead>
+            <tbody id="lista">
+            </tbody>
+    </section>
+    </div>`
+       mesMasGanancia()
+      break;
+
+      case "trimestre": 
+      document.getElementById("zonaTabla").innerHTML += `<div class="box">
+      <h1 class="title is-italic has-text-weight-light">Ventas</h1>
+      <table id="tabla" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+              <tr>
+                  <th class="has-text-centered">Trimestre</th>
+                  <th class="has-text-centered">Id del artículo</th>
+                  <th class="has-text-centered">Artículo</th>
+                  <th class="has-text-centered">Cantidad Vendida</th>
+              </tr>
+          </thead>
+          <tbody id="lista">
+          </tbody>
+  </section>
+  </div>`
+  menorGananciaTrimestres()
+  break;
+
+  case "año":
+    document.getElementById("zonaTabla").innerHTML += `<div class="box">
+      <h1 class="title is-italic has-text-weight-light">Ventas</h1>
+      <table id="tabla" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+              <tr>
+                  <th class="has-text-centered">Id del artículo</th>
+                  <th class="has-text-centered">Artículo</th>
+                  <th class="has-text-centered">Cantidad Vendida</th>
+              </tr>
+          </thead>
+          <tbody id="lista">
+          </tbody>
+  </section>
+  </div>`
+  mayorGananciaAño()
+    break;
+  }
+}
+
+</script>
+    <script src="/practicaArray.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>
